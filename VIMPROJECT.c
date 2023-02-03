@@ -115,8 +115,13 @@ REPLACE:
     replace --str1 yeadambadbakht --str2 "pouyan shams" --file /root/pouyan.txt
 
 GREP:
-    grep --str "khobi" --files /root/pouyan.txt
+    grep --str pouyan --files /root/pouyan.txt
+    grep -c --str pouyan --files /root/pouyan.txt
+    grep --str pouyan --files /root/pouyan.txt /root/pouyan2.txt
+    grep -l --str pouyan --files /root/pouyan.txt /root/pouyan2.txt
 
+UNDO:
+    undo /root/pouyan.txt
 
 COMPARE:
     compare /root/pouyan.txt /root/pouyan2.txt
@@ -1101,7 +1106,7 @@ void text_comparator(char cmd[])
 
             if (strcmp(book1[i], book2[i]) != 0)
             {
-                printf("\n============%d============\n", i + 1);
+                printf("\n================#%d================\n", i + 1);
                 printf("%s\n", book1[i]);
                 printf("%s\n", book2[i]);
             }
@@ -1146,7 +1151,7 @@ tree(char k[], int a)
             closedir(d);
         }
     }
-    if (a == 2)
+       else if (a == 2)
     {
 
         DIR *d;
@@ -1169,6 +1174,8 @@ tree(char k[], int a)
             closedir(d);
         }
     }
+    else
+        printf("Invalid Depth\n");
 }
 
 grep(char cmd[])
@@ -1602,16 +1609,8 @@ paste(char cmd[])
         {
             b = b * 10 + (cmd[i++] - '0');
         }
-
+        undosave(book);
         writeinfileinsert(temp, book, clipboard, a, b, size);
     }
     close(f);
 }
-
-// pastestr --file /root/pouyan.txt --pos 1:0
-
-// copystr --file /root/pouyan.txt --pos 2:11 -size 6 -b
-
-// copystr --file /root/pouyan.txt --pos 2:3 -size 6 -f
-
-// tree 2 =D insertstr

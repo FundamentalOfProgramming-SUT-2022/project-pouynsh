@@ -5,8 +5,6 @@
 #include <stdlib.h>
 #include <dir.h>
 #include <dirent.h>
-// insertstr --file /root/pouyan.txt -str pouyan --pos 1:2
-// undo --file /root/pouyan.txt
 
 int check_string(char cmd[], int a, char str[]);
 void check_cmd(char cmd[]);
